@@ -22,6 +22,14 @@ const Home = () => {
 	const { title, explanation, url, media_type } = data;
 
 	const handleDateChange = (e) => {
+		const [year, month, day] = e.target.value.split('-');
+		if (isNaN(year) || isNaN(month) || isNaN(day)) {
+			console.log('not a number');
+		}
+		const dateSelected = new Date(year, Number(month) - 1, day);
+		if (dateSelected > new Date()) {
+			return;
+		}
 		setDate(e.target.value);
 	};
 
