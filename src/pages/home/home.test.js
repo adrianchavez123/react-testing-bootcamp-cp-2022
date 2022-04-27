@@ -42,4 +42,16 @@ describe('Displays Home page', () => {
 			screen.getByText(/Massive stars, abrasive winds, mountains of dust, and energetic light sculpt one of the/i)
 		).toBeInTheDocument();
 	});
+
+	test('the user chooses a date in the future', async () => {
+		setup();
+
+		const dateInput = screen.getByLabelText('Select a date');
+
+		userEvent.type(dateInput, '2025-04-12');
+
+		const warning = await screen.findByText(/Invalid date./i);
+
+		expect(screen.getByText(/Invalid date./i)).toBeInTheDocument();
+	});
 });

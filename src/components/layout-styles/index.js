@@ -66,3 +66,12 @@ export const FooterStyles = styled.footer`
 	font-size: 1.3rem;
 	justify-content: flex-end;
 `;
+
+export const WarningText = styled.p`
+	padding: 0;
+	margin: 0;
+	justify-self: center;
+	color: #fdbbbd;
+	font-size: 2rem;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+`;
