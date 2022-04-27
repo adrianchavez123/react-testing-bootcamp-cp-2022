@@ -1,6 +1,6 @@
 import React from 'react';
 import bg from '../../images/bg.jpg';
-import Home from '../../pages/home/home.pages';
+import Home from '../../pages/home';
 
 const App = () => {
 	return (

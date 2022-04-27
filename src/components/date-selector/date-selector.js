@@ -9,7 +9,7 @@ const DateSelector = ({ date, handleRefeshimage, handleDateChange }) => {
 				<label htmlFor='date-selector'>Select a date</label>
 				<input id='date-selector' type='date' value={date} onChange={handleDateChange} />
 			</InputDateContainer>
-			<Button handleOnClick={handleRefeshimage}>Refresh image</Button>
+			<Button handleOnClick={handleRefeshimage}>Today&apos;s picture</Button>
 		</DateSelectorContainer>
 	);
 };

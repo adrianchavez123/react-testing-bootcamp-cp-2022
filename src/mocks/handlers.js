@@ -1,10 +1,18 @@
 import { rest } from 'msw';
 
 export const handlers = [
-	//https://api.nasa.gov/planetary/apod
-	rest.get('/apod', (req, res, ctx) => {
+	rest.get('https://api.nasa.gov/planetary/apod', (req, res, ctx) => {
 		const apiKey = req.url.searchParams.get('api_key');
 		const date = req.url.searchParams.get('date');
+
+		if (!apiKey || !date) {
+			return res(
+				ctx.status(403),
+				ctx.json({
+					errorMessage: 'API_KEY_MISSING',
+				})
+			);
+		}
 		return res(
 			ctx.status(200),
 			ctx.json({

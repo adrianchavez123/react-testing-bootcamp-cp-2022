@@ -9,12 +9,12 @@ describe('The DateSelector component is rendered', () => {
 		setup();
 
 		expect(screen.getByLabelText('Select a date')).toBeInTheDocument();
-		expect(screen.getByRole('button', { name: /refresh image/i })).toBeInTheDocument();
+		expect(screen.getByRole('button', { name: /today\'s picture/i })).toBeInTheDocument();
 	});
 
 	test('The input value matches date property', () => {
-		const testDate = '2022-04-20';
-		render(<DateSelector date={testDate} />);
+		const testDate = '2022-04-13';
+		render(<DateSelector date={testDate} handleDateChange={() => {}} />);
 		expect(screen.getByLabelText('Select a date')).toHaveValue(testDate);
 	});
 	test('The button is clickable', () => {

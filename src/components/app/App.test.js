@@ -16,6 +16,18 @@ describe('Displays Home page', () => {
 		expect(screen.getByLabelText('Select a date')).toBeInTheDocument();
 	});
 
+	test('The left aside section is in the app', () => {
+		setup();
+
+		expect(screen.getByTitle('Embedded youtube')).toBeInTheDocument();
+	});
+
+	test(' The right aside section is in the app', () => {
+		setup();
+
+		expect(screen.getByTestId('explanation-text')).toBeInTheDocument();
+	});
+
 	test('The footer should be present on the app.', () => {
 		setup();
 
