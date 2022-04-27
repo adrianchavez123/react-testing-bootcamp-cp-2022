@@ -25,6 +25,7 @@ const Home = () => {
 		const [year, month, day] = e.target.value.split('-');
 		if (isNaN(year) || isNaN(month) || isNaN(day)) {
 			console.log('not a number');
+			return;
 		}
 		const dateSelected = new Date(year, Number(month) - 1, day);
 		if (dateSelected > new Date()) {
