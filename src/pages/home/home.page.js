@@ -20,7 +20,7 @@ const Home = () => {
 	);
 	const [warning, setWaring] = useState(null);
 	const { status, data } = useFetch(date);
-	const { title, explanation, url, media_type } = data;
+	const { title, explanation, url, media_type, msg } = data;
 
 	const handleDateChange = (e) => {
 		try {
@@ -28,12 +28,11 @@ const Home = () => {
 				const [year, month, day] = getDateFragments(e.target.value);
 				const dateSelected = new Date(year, Number(month) - 1, day);
 				if (dateSelected > new Date()) {
-					console.log('aqiu');
 					setWaring('Invalid date.');
-					return;
+				} else {
+					setWaring(null);
 				}
 				setDate(e.target.value);
-				setWaring(null);
 			}
 		} catch (err) {
 			setWaring('There was an error, please try again.');
@@ -42,6 +41,7 @@ const Home = () => {
 
 	const handleRefeshimage = () => {
 		setDate(`${new Date().getFullYear()}-${getMonthNumber(new Date().getMonth())}-${new Date().getDate()}`);
+		setWaring(null);
 	};
 
 	return (
@@ -50,6 +50,7 @@ const Home = () => {
 				<Title>NASA&apos;s Astronomy Picture of the Day</Title>
 				<DateSelector date={date} handleDateChange={handleDateChange} handleRefeshimage={handleRefeshimage} />
 				{warning && <WarningText>{warning}</WarningText>}
+				{msg && <WarningText>{msg}</WarningText>}
 			</Nav>
 
 			<AsideLeft>
